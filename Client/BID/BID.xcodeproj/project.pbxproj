@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58C8CFCC1786DD2C00F9A154 /* UserWish.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C8CFCB1786DD2C00F9A154 /* UserWish.m */; };
 		58DBAA211785D1B700497811 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DBAA201785D1B700497811 /* UIKit.framework */; };
 		58DBAA231785D1B700497811 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DBAA221785D1B700497811 /* Foundation.framework */; };
 		58DBAA251785D1B700497811 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DBAA241785D1B700497811 /* CoreGraphics.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58C8CFCA1786DD2C00F9A154 /* UserWish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserWish.h; sourceTree = "<group>"; };
+		58C8CFCB1786DD2C00F9A154 /* UserWish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserWish.m; sourceTree = "<group>"; };
 		58DBAA1C1785D1B700497811 /* BID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BID.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58DBAA201785D1B700497811 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58DBAA221785D1B700497811 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -128,6 +131,8 @@
 				58DBAA3B1785D1B800497811 /* ViewController.h */,
 				58DBAA3C1785D1B800497811 /* ViewController.m */,
 				58DBAA271785D1B700497811 /* Supporting Files */,
+				58C8CFCA1786DD2C00F9A154 /* UserWish.h */,
+				58C8CFCB1786DD2C00F9A154 /* UserWish.m */,
 			);
 			path = BID;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				58DBAA311785D1B700497811 /* AppDelegate.m in Sources */,
 				58DBAA3D1785D1B800497811 /* ViewController.m in Sources */,
 				58DBAA5D1785D70C00497811 /* WishListViewController.m in Sources */,
+				58C8CFCC1786DD2C00F9A154 /* UserWish.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +458,7 @@
 				58DBAA571785D1B800497811 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58DBAA581785D1B800497811 /* Build configuration list for PBXNativeTarget "BIDTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +467,7 @@
 				58DBAA5A1785D1B800497811 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
