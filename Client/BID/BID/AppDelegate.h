@@ -2,8 +2,8 @@
 //  AppDelegate.h
 //  BID
 //
-//  Created by brightman on 13-7-4.
-//  Copyright (c) 2013年 brightman. All rights reserved.
+//  Created by YoungShook on 13-7-6.
+//  Copyright (c) 2013年 qfpay. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

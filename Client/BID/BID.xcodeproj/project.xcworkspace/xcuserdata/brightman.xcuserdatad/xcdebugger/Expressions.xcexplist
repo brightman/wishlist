@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[MyWishListC textFieldShouldReturn:]:MyWishListC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "textField.text">
+            </PersistentString>
+            <PersistentString
+               value = "item.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__32-[User UpdateWish:withDelegate:]_block_invoke:User.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "wish.ID">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[User UpdateWish:withDelegate:]:User.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "wish.ID">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
