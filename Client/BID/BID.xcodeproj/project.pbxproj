@@ -78,7 +78,6 @@
 		B539D685178933E300A43875 /* fly-r-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B539D675178933E300A43875 /* fly-r-1@2x.png */; };
 		B539D6871789375000A43875 /* Noteworthy.ttc in Resources */ = {isa = PBXBuildFile; fileRef = B539D6861789375000A43875 /* Noteworthy.ttc */; };
 		B539D68A1789585B00A43875 /* add_new.png in Resources */ = {isa = PBXBuildFile; fileRef = B539D6881789585B00A43875 /* add_new.png */; };
-		B539D68B1789585B00A43875 /* add_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B539D6891789585B00A43875 /* add_new@2x.png */; };
 		B553B1241787F89000376C01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B553B1231787F89000376C01 /* UIKit.framework */; };
 		B553B1261787F89000376C01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B553B1251787F89000376C01 /* Foundation.framework */; };
 		B553B1281787F89000376C01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B553B1271787F89000376C01 /* CoreGraphics.framework */; };
@@ -525,7 +524,6 @@
 				B539D685178933E300A43875 /* fly-r-1@2x.png in Resources */,
 				B539D6871789375000A43875 /* Noteworthy.ttc in Resources */,
 				B539D68A1789585B00A43875 /* add_new.png in Resources */,
-				B539D68B1789585B00A43875 /* add_new@2x.png in Resources */,
 				5834B29E178B09B500A51583 /* BaiduSocialShareSource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

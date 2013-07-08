@@ -285,8 +285,8 @@
 
 -(void)preparedToPlay:(NSNotification *)notification{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:MPMediaPlaybackIsPreparedToPlayDidChangeNotification object:[notification object]];
-    //[self performSelector:@selector(endToPlay) withObject:nil afterDelay:201.50f];
-    [self performSelector:@selector(endToPlay) withObject:nil afterDelay:1.50f];
+    [self performSelector:@selector(endToPlay) withObject:nil afterDelay:201.50f];
+    //[self performSelector:@selector(endToPlay) withObject:nil afterDelay:1.50f];
 }
 
 -(void)endToPlay{
