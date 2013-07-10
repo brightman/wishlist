@@ -24,6 +24,7 @@
 		5834B2AF178B0AE200A51583 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5834B2AE178B0AE200A51583 /* CoreTelephony.framework */; };
 		5834B2B1178B0AF000A51583 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5834B2B0178B0AF000A51583 /* libsqlite3.dylib */; };
 		5834B2B3178B0B0000A51583 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5834B2B2178B0B0000A51583 /* libstdc++.dylib */; };
+		58D97A41178D5F520068C2C5 /* OtherWishListC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D97A40178D5F520068C2C5 /* OtherWishListC.m */; };
 		B508F9571788BC7800812DA9 /* grass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B508F9561788BC7800812DA9 /* grass@2x.png */; };
 		B508F95A1788C3BA00812DA9 /* list_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B508F9581788C3BA00812DA9 /* list_bg@2x.png */; };
 		B508F95B1788C3BA00812DA9 /* icon_done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B508F9591788C3BA00812DA9 /* icon_done@2x.png */; };
@@ -120,6 +121,8 @@
 		5834B2AE178B0AE200A51583 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		5834B2B0178B0AF000A51583 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5834B2B2178B0B0000A51583 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		58D97A3F178D5F520068C2C5 /* OtherWishListC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OtherWishListC.h; path = ../OtherWishListC.h; sourceTree = "<group>"; };
+		58D97A40178D5F520068C2C5 /* OtherWishListC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OtherWishListC.m; path = ../OtherWishListC.m; sourceTree = "<group>"; };
 		B508F9561788BC7800812DA9 /* grass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grass@2x.png"; sourceTree = "<group>"; };
 		B508F9581788C3BA00812DA9 /* list_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_bg@2x.png"; sourceTree = "<group>"; };
 		B508F9591788C3BA00812DA9 /* icon_done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_done@2x.png"; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 		B508F95F1788D12700812DA9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				58D97A3F178D5F520068C2C5 /* OtherWishListC.h */,
+				58D97A40178D5F520068C2C5 /* OtherWishListC.m */,
 				B553B1471787FBAC00376C01 /* MyWishListC.h */,
 				B553B1481787FBAC00376C01 /* MyWishListC.m */,
 				B518509017882C5E00A3F581 /* TPGestureTableViewCell.h */,
@@ -564,6 +569,7 @@
 				5834B2A7178B09B500A51583 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				5834B2A8178B09B500A51583 /* SBJsonStreamWriterState.m in Sources */,
 				5834B2A9178B09B500A51583 /* SBJsonWriter.m in Sources */,
+				58D97A41178D5F520068C2C5 /* OtherWishListC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

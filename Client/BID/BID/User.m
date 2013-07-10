@@ -48,8 +48,10 @@ static User *sharedUser = nil;
     @synchronized(self) {
         if (sharedUser == nil) {
             sharedUser = [[self alloc] init];
+            sharedUser._userDefaults = [NSUserDefaults standardUserDefaults];            
         }
     }
+    
     return sharedUser;
 }
 
@@ -65,7 +67,7 @@ static User *sharedUser = nil;
         NSString *responseString = [request responseString];
         NSData *data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        
+        [__userDefaults setBool:TRUE forKey:@"Notfirst"];
         [delegate connection:dic successConType:1];
     }];
     [request setFailedBlock:^{
@@ -202,6 +204,7 @@ static User *sharedUser = nil;
 
 - (void)dealloc
 {
+    [__userDefaults synchronize];
     [super dealloc];
 }
 @end

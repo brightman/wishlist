@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MyWishListC.h"
+#import "OtherWishListC.h"
 #import <BaiduSocialShare/BDSocialShareSDK.h>
 @implementation AppDelegate
 
@@ -37,7 +38,12 @@
     
     self.window.backgroundColor = [UIColor blackColor];
     MyWishListC *myWishListC = [[MyWishListC new]autorelease];
-    self.window.rootViewController = myWishListC;
+    OtherWishListC *otherWishListC = [[OtherWishListC new] autorelease];
+    
+    [self.window addSubview:myWishListC.view];
+    [self.window addSubview:otherWishListC.view];
+    [self.window bringSubviewToFront:myWishListC.view];
+    //self.window.rootViewController = myWishListC;
     [self.window makeKeyAndVisible];
     return YES;
 }

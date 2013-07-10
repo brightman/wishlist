@@ -8,7 +8,7 @@
 
 #import "TPGestureTableViewCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import <BaiduSocialShare/BDSocialShareSDK.h>
+
 #import "User.h"
 
 @interface SeperateLine : UIView
@@ -124,12 +124,12 @@ typedef enum {
 -(void)layoutBottomView{
     if(!self.bottomRightView){
         _bottomRightView = [[UIView alloc]initWithFrame:CGRectMake(70, 0, self.bounds.size.width-80, self.bounds.size.height)];
-        UIButton *shareBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+        /*UIButton *shareBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [shareBtn setBackgroundImage:[UIImage imageNamed:@"icon_share@2x.png"] forState:UIControlStateNormal];
         shareBtn.highlighted = YES;
         [shareBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
             
-        }];
+        }];*/
         
         UIButton *sameBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [sameBtn setBackgroundImage:[UIImage imageNamed:@"icon_same@2x.png"] forState:UIControlStateNormal];
@@ -147,13 +147,13 @@ typedef enum {
         
         supportBtn.frame = CGRectMake(40, 0, 30, 48);
         sameBtn.frame = CGRectMake(115,0 , 30, 48);
-        shareBtn.frame = CGRectMake(190, 0, 30, 48);
+        //shareBtn.frame = CGRectMake(190, 0, 30, 48);
         
-        [_bottomRightView addSubview:shareBtn];
+        //[_bottomRightView addSubview:shareBtn];
         [_bottomRightView addSubview:sameBtn];
         [_bottomRightView addSubview:supportBtn];
         
-        [shareBtn addTarget:self action:@selector(baidushare) forControlEvents:UIControlEventTouchUpInside];
+        //[shareBtn addTarget:self action:@selector(baidushare) forControlEvents:UIControlEventTouchUpInside];
         
         //_bottomRightView.backgroundColor = [UIColor colorWithRed:0.694 green:0.596 blue:0.376 alpha:1.000];
         _bottomRightView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.300];
@@ -448,64 +448,6 @@ typedef enum {
 }
 
 
--(void)baidushare{
-    NSLog(@"baidushare");
-    BDSocialShareEventHandler result = ^(SHARE_RESULT requestResult, NSString *shareType, id response, NSError *error)
-    {
-        if (requestResult == BD_SOCIAL_SHARE_SUCCESS) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享成功" message:[NSString stringWithFormat:@"%@分享成功",shareType] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-            NSLog(@"%@分享成功",shareType);
-        } else if (requestResult == BD_SOCIAL_SHARE_CANCEL){
-            NSLog(@"分享取消");
-        } else if (requestResult == BD_SOCIAL_SHARE_FAIL){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败" message:[NSString stringWithFormat:@"%@分享失败\n error code:%d;\n error message:%@",shareType,error.code,[error localizedDescription]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-            NSLog(@"%@分享失败\n error code:%d;\n error message:%@",shareType,error.code,[error localizedDescription]);
-        }
-    };
-    
-    
-    BDSocialShareContent *content = [BDSocialShareContent shareContentWithDescription:@"Before I die 不是一个简单的to do list。它是一个也许需要你穷尽一生去实现的to do list。你可以，写下你死前一定要完成的愿望；记下你已经完成的人生成就；查看大家的梦想；将你喜欢的据为己有；分享你的梦想给你的好友；支持你的朋友实现梦想。让我们期待更多！" url:@"http://beforeidie.duapp.com" title:@"Things to do before i die"];
-    
-    
-    
-    CGSize imageSize = [[UIScreen mainScreen] bounds].size;
-    if (NULL != UIGraphicsBeginImageContextWithOptions) {
-        UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
-    }
-    else
-    {
-        UIGraphicsBeginImageContext(imageSize);
-    }
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    for (UIWindow * window in [[UIApplication sharedApplication] windows]) {
-        if (![window respondsToSelector:@selector(screen)] || [window screen] == [UIScreen mainScreen]) {
-            CGContextSaveGState(context);
-            CGContextTranslateCTM(context, [window center].x, [window center].y);
-            CGContextConcatCTM(context, [window transform]);
-            CGContextTranslateCTM(context, -[window bounds].size.width*[[window layer] anchorPoint].x, -[window bounds].size.height*[[window layer] anchorPoint].y);
-            [[window layer] renderInContext:context];
-            
-            CGContextRestoreGState(context);
-        }
-    }
-    
-    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    [content addImageWithImageSource:theImage imageUrl:nil];
-    
-    
-    SHARE_MENU_STYLE style = BD_SOCIAL_SHARE_MENU_THEME_STYLE;
-    
-    
-    [BDSocialShareSDK showShareMenuWithShareContent:content menuStyle:style result:result];
-}
+
 
 @end

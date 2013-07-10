@@ -19,6 +19,7 @@
 @interface User : NSObject
 
 @property(nonatomic,retain)NSMutableArray *_wishlist;
+@property(nonatomic,retain)NSUserDefaults *_userDefaults;
 
 + (User *)shared;
 

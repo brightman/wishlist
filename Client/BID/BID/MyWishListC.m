@@ -8,6 +8,8 @@
 #import "MyWishListC.h"
 #import "TPGestureTableViewCell.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <QuartzCore/QuartzCore.h>
+#import <BaiduSocialShare/BDSocialShareSDK.h>
 #import "User.h"
 #import "Wish.h"
 #import "OpenUDID.h"
@@ -23,16 +25,27 @@
 
 @implementation MyWishListC
 
+-(BOOL)canBecomeFirstResponder{
+    return YES;
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
         [[UIApplication sharedApplication]setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
+    [self becomeFirstResponder];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [self resignFirstResponder];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     _dataArray = [NSMutableArray new];
-    [[User shared]AddUser:@"YoungShook" withSex:@"M" withDelegate:self];
+    User *user = [User shared];
+    [user AddUser:@"YoungShook" withSex:@"M" withDelegate:self];
     
     UIImageView *bg = [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)]autorelease];
     bg.image = [UIImage imageNamed:@"bg@2x.png"];
@@ -47,7 +60,9 @@
     _myTableView.backgroundColor=[UIColor clearColor];
     [self.view addSubview:_myTableView];
     [self performSelector:@selector(reloadWishList) withObject:nil afterDelay:0.0];
-    [self splashView];
+    if(![user._userDefaults boolForKey:@"Notfirst"]){
+        [self splashView];
+    }
 }
 
 -(void)reloadWishList{
@@ -94,6 +109,15 @@
         
         UIImageView *headerView = [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 67)]autorelease];
         headerView.image = [UIImage imageNamed:@"title_bg@2x"];
+        //add share button
+        UIButton *shareBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+        [shareBtn setBackgroundImage:[UIImage imageNamed:@"icon_share@2x.png"] forState:UIControlStateNormal];
+        shareBtn.highlighted = YES;
+        
+        shareBtn.frame = CGRectMake(250, 0, 30, 48);
+        [headerView addSubview:shareBtn];
+        [shareBtn addTarget:self action:@selector(baidushare) forControlEvents:UIControlEventTouchUpInside];
+        
         [cell addSubview:headerView];
         return cell;
     }
@@ -334,5 +358,73 @@
     return (toInterfaceOrientation == UIDeviceOrientationPortrait);
 }
 
+-(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if (motion == UIEventSubtypeMotionShake) {
+        //UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"shake" message:@"game over" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+        //[alert show];
+        [self.view.window sendSubviewToBack:self.view];
+    }
+}
+
+
+-(void)baidushare{
+    NSLog(@"baidushare");
+    BDSocialShareEventHandler result = ^(SHARE_RESULT requestResult, NSString *shareType, id response, NSError *error)
+    {
+        if (requestResult == BD_SOCIAL_SHARE_SUCCESS) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享成功" message:[NSString stringWithFormat:@"%@分享成功",shareType] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            NSLog(@"%@分享成功",shareType);
+        } else if (requestResult == BD_SOCIAL_SHARE_CANCEL){
+            NSLog(@"分享取消");
+        } else if (requestResult == BD_SOCIAL_SHARE_FAIL){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败" message:[NSString stringWithFormat:@"%@分享失败\n error code:%d;\n error message:%@",shareType,error.code,[error localizedDescription]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            NSLog(@"%@分享失败\n error code:%d;\n error message:%@",shareType,error.code,[error localizedDescription]);
+        }
+    };
+    
+    
+    BDSocialShareContent *content = [BDSocialShareContent shareContentWithDescription:@"Before I die 不是一个简单的to do list。它是一个也许需要你穷尽一生去实现的to do list。你可以，写下你死前一定要完成的愿望；记下你已经完成的人生成就；查看大家的梦想；将你喜欢的据为己有；分享你的梦想给你的好友；支持你的朋友实现梦想。让我们期待更多！" url:@"http://beforeidie.duapp.com" title:@"Things to do before i die"];
+    
+    
+    
+    CGSize imageSize = [[UIScreen mainScreen] bounds].size;
+    if (NULL != UIGraphicsBeginImageContextWithOptions) {
+        UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    }
+    else
+    {
+        UIGraphicsBeginImageContext(imageSize);
+    }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    for (UIWindow * window in [[UIApplication sharedApplication] windows]) {
+        if (![window respondsToSelector:@selector(screen)] || [window screen] == [UIScreen mainScreen]) {
+            CGContextSaveGState(context);
+            CGContextTranslateCTM(context, [window center].x, [window center].y);
+            CGContextConcatCTM(context, [window transform]);
+            CGContextTranslateCTM(context, -[window bounds].size.width*[[window layer] anchorPoint].x, -[window bounds].size.height*[[window layer] anchorPoint].y);
+            [[window layer] renderInContext:context];
+            
+            CGContextRestoreGState(context);
+        }
+    }
+    
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    [content addImageWithImageSource:theImage imageUrl:nil];
+    
+    
+    SHARE_MENU_STYLE style = BD_SOCIAL_SHARE_MENU_THEME_STYLE;
+    
+    
+    [BDSocialShareSDK showShareMenuWithShareContent:content menuStyle:style result:result];
+}
 
 @end
