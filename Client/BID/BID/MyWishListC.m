@@ -25,13 +25,14 @@
 
 @implementation MyWishListC
 
--(BOOL)canBecomeFirstResponder{
+-(BOOL)canBecomeFirstResponder {
     return YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
         [[UIApplication sharedApplication]setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
+    
     [self becomeFirstResponder];
 }
 
@@ -40,9 +41,15 @@
     [super viewWillDisappear:animated];
 }
 
+-(void)updateLabel{
+    NSTimeInterval timeInterval = [self.countdownDate timeIntervalSinceNow];
+    self.countdownLabel.text = [NSString stringWithFormat:@"%.0f", timeInterval];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     _dataArray = [NSMutableArray new];
     User *user = [User shared];
     [user AddUser:@"YoungShook" withSex:@"M" withDelegate:self];
@@ -50,6 +57,9 @@
     UIImageView *bg = [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)]autorelease];
     bg.image = [UIImage imageNamed:@"bg@2x.png"];
     [self.view addSubview:bg];
+    
+    
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
 	_myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0,
                                                                 self.view.frame.size.width,
@@ -59,6 +69,8 @@
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _myTableView.backgroundColor=[UIColor clearColor];
     [self.view addSubview:_myTableView];
+    
+    
     [self performSelector:@selector(reloadWishList) withObject:nil afterDelay:0.0];
     if(![user._userDefaults boolForKey:@"Notfirst"]){
         [self splashView];
@@ -115,10 +127,16 @@
         shareBtn.highlighted = YES;
         
         shareBtn.frame = CGRectMake(250, 0, 30, 48);
-        [headerView addSubview:shareBtn];
-        [shareBtn addTarget:self action:@selector(baidushare) forControlEvents:UIControlEventTouchUpInside];
         
+        [shareBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+            NSLog(@"click share");
+            [self baidushare];
+        }];
         [cell addSubview:headerView];
+        [headerView addSubview:shareBtn];
+        //[shareBtn addTarget:self action:@selector(baidushare) forControlEvents:UIControlEventTouchUpInside];
+        
+
         return cell;
     }
     
@@ -182,6 +200,14 @@
             
         }];
         
+        self.countdownDate = [NSDate dateWithTimeIntervalSinceNow:3000];
+        self.countdownLabel = [[[UILabel alloc] init ] autorelease];
+        self.countdownLabel.text = @"99:88:77";
+        self.countdownLabel.frame = CGRectMake(-10,-5,100,30);
+        self.countdownLabel.backgroundColor = [UIColor clearColor];
+        [animatHeadset addSubview:self.countdownLabel];
+        [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLabel) userInfo:nil repeats:YES];
+        
         [cell addSubview:animatHeadset];
         [animatHeadset release];
         return cell;
@@ -206,10 +232,10 @@
     }
     
     if (indexPath.row == [_dataArray count]+2) {
-        Wish *id = [[Wish new]autorelease];
-        id.title = @"add item";
-        [_dataArray addObject:id];
-        [_myTableView reloadData];
+     //   Wish *id = [[Wish new]autorelease];
+     //   id.title = @"add item";
+     //   [_dataArray addObject:id];
+     //   [_myTableView reloadData];
         
         return;
     }
@@ -362,6 +388,7 @@
     if (motion == UIEventSubtypeMotionShake) {
         //UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"shake" message:@"game over" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
         //[alert show];
+        [self resignFirstResponder];
         [self.view.window sendSubviewToBack:self.view];
     }
 }

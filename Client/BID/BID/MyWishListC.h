@@ -9,4 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TPGestureTableViewCell.h"
 @interface MyWishListC : UIViewController<UITableViewDataSource,UITableViewDelegate,TPGestureTableViewCellDelegate,UserASIDelegate,UITextFieldDelegate>
+@property(nonatomic,retain) NSDate *countdownDate;
+@property(nonatomic,retain) UILabel *countdownLabel;
 @end

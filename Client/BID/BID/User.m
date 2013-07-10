@@ -142,7 +142,7 @@ static User *sharedUser = nil;
         NSString *responseString = [request responseString];
         NSData *data = [responseString dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        [delegate connection:dic successConType:5];
+        [delegate connection:dic successConType:4];
     }];
     [request setFailedBlock:^{
         

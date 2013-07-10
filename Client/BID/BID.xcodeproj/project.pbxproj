@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58106529178D7AA700B7CAAE /* shock_title_bg_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58106526178D7AA700B7CAAE /* shock_title_bg_3@2x.png */; };
+		5810652A178D7AA700B7CAAE /* shock_title_bg_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58106527178D7AA700B7CAAE /* shock_title_bg_2@2x.png */; };
+		5810652B178D7AA700B7CAAE /* shock_title_bg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58106528178D7AA700B7CAAE /* shock_title_bg_1@2x.png */; };
 		5834B29D178B09B500A51583 /* BaiduSocialShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5834B280178B09B500A51583 /* BaiduSocialShare.framework */; };
 		5834B29E178B09B500A51583 /* BaiduSocialShareSource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5834B281178B09B500A51583 /* BaiduSocialShareSource.bundle */; };
 		5834B2A0178B09B500A51583 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5834B28A178B09B500A51583 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -93,6 +96,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58106526178D7AA700B7CAAE /* shock_title_bg_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shock_title_bg_3@2x.png"; sourceTree = "<group>"; };
+		58106527178D7AA700B7CAAE /* shock_title_bg_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shock_title_bg_2@2x.png"; sourceTree = "<group>"; };
+		58106528178D7AA700B7CAAE /* shock_title_bg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shock_title_bg_1@2x.png"; sourceTree = "<group>"; };
 		5834B280178B09B500A51583 /* BaiduSocialShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduSocialShare.framework; sourceTree = "<group>"; };
 		5834B281178B09B500A51583 /* BaiduSocialShareSource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BaiduSocialShareSource.bundle; sourceTree = "<group>"; };
 		5834B288178B09B500A51583 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -398,6 +404,9 @@
 			isa = PBXGroup;
 			children = (
 				B539D666178933E000A43875 /* fly-l-6@2x.png */,
+				58106526178D7AA700B7CAAE /* shock_title_bg_3@2x.png */,
+				58106527178D7AA700B7CAAE /* shock_title_bg_2@2x.png */,
+				58106528178D7AA700B7CAAE /* shock_title_bg_1@2x.png */,
 				B539D667178933E100A43875 /* fly-l-5@2x.png */,
 				B539D668178933E100A43875 /* fly-l-4@2x.png */,
 				B539D669178933E100A43875 /* fly-l-3@2x.png */,
@@ -530,6 +539,9 @@
 				B539D6871789375000A43875 /* Noteworthy.ttc in Resources */,
 				B539D68A1789585B00A43875 /* add_new.png in Resources */,
 				5834B29E178B09B500A51583 /* BaiduSocialShareSource.bundle in Resources */,
+				58106529178D7AA700B7CAAE /* shock_title_bg_3@2x.png in Resources */,
+				5810652A178D7AA700B7CAAE /* shock_title_bg_2@2x.png in Resources */,
+				5810652B178D7AA700B7CAAE /* shock_title_bg_1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

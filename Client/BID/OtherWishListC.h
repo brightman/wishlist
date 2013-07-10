@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TPGestureTableViewCell.h"
 
-@interface OtherWishListC : UITableViewController
+@interface OtherWishListC : UITableViewController<UITableViewDataSource,UITableViewDelegate,TPGestureTableViewCellDelegate,UserASIDelegate>
 
 @end
