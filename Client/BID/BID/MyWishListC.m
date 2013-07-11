@@ -10,6 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
 #import <BaiduSocialShare/BDSocialShareSDK.h>
+#import "Toast+UIView.h"
 #import "User.h"
 #import "Wish.h"
 #import "OpenUDID.h"
@@ -254,8 +255,10 @@
     if (type == 1) {
         
     }else if (type == 2){
+        [self.view makeToast:@"Add wish successfully!" duration:3.0 position:@"center"];
         
     }else if (type == 3){
+        [self.view makeToast:@"Add wish successfully!" duration:3.0 position:@"center"];
         
     }else if (type == 4){//Get Wish list
         if (![[dic objectForKey:@"ret"]integerValue]) {
@@ -264,6 +267,9 @@
                 Wish *id = [[Wish new]autorelease];
                 id.ID = [dict objectForKey:@"id"];
                 id.title = [dict objectForKey:@"title"];
+                id.cost = [dict objectForKey:@"cost"];
+                id.supportCount = [dict objectForKey:@"support"];
+                id.sameCount = [dict objectForKey:@"own"];
                 [_dataArray addObject:id];
             }
             [_myTableView reloadData];

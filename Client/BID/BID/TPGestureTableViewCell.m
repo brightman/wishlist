@@ -134,24 +134,33 @@ typedef enum {
         UIButton *sameBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [sameBtn setBackgroundImage:[UIImage imageNamed:@"icon_same@2x.png"] forState:UIControlStateNormal];
         sameBtn.highlighted = YES;
+        UILabel *sameLabel = [[[UILabel alloc] init ]autorelease];
+        sameLabel.text = [NSString stringWithFormat:@"%@",_itemData.sameCount];
         [sameBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
             
         }];
         
+        
         UIButton *supportBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [supportBtn setBackgroundImage:[UIImage imageNamed:@"icon_support@2x.png"] forState:UIControlStateNormal];
         supportBtn.highlighted = YES;
-        [supportBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        UILabel *supportLabel = [[[UILabel alloc] init] autorelease];
+        supportLabel.text = [NSString stringWithFormat:@"%@",_itemData.supportCount];
+        /*[supportBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
             
-        }];
+        }];*/
         
         supportBtn.frame = CGRectMake(40, 0, 30, 48);
+        supportLabel.frame = CGRectMake(70,0,30,48);
         sameBtn.frame = CGRectMake(115,0 , 30, 48);
+        sameLabel.frame = CGRectMake(145,0,30,48);
         //shareBtn.frame = CGRectMake(190, 0, 30, 48);
         
         //[_bottomRightView addSubview:shareBtn];
         [_bottomRightView addSubview:sameBtn];
+        [_bottomRightView addSubview:sameLabel];
         [_bottomRightView addSubview:supportBtn];
+        [_bottomRightView addSubview:supportLabel];
         
         //[shareBtn addTarget:self action:@selector(baidushare) forControlEvents:UIControlEventTouchUpInside];
         

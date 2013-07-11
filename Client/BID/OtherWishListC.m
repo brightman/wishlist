@@ -250,6 +250,9 @@
                 Wish *id = [[Wish new]autorelease];
                 id.ID = [dict objectForKey:@"id"];
                 id.title = [dict objectForKey:@"title"];
+                id.cost = [dict objectForKey:@"cost"];
+                id.supportCount = [dict objectForKey:@"support"];
+                id.sameCount = [dict objectForKey:@"own"];
                 [_dataArray addObject:id];
             }
             [_myTableView reloadData];

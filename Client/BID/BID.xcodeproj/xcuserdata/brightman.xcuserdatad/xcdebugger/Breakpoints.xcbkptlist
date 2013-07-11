@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BID/MyWishListC.m"
-         timestampString = "395159353.582241"
+         timestampString = "395245241.613755"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "392"
-         endingLineNumber = "392"
+         startingLineNumber = "398"
+         endingLineNumber = "398"
          landmarkName = "-motionEnded:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BID/MyWishListC.m"
-         timestampString = "395159353.582241"
+         timestampString = "395222569.180183"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "131"
-         endingLineNumber = "131"
+         startingLineNumber = "132"
+         endingLineNumber = "132"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,16 +60,16 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BID/MyWishListC.m"
-         timestampString = "395159353.582241"
+         timestampString = "395245241.613755"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "398"
-         endingLineNumber = "398"
+         startingLineNumber = "404"
+         endingLineNumber = "404"
          landmarkName = "-baidushare"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BID/User.m"
@@ -82,7 +82,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BID/User.m"
@@ -95,7 +95,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "BID/User.m"
@@ -105,6 +105,19 @@
          startingLineNumber = "108"
          endingLineNumber = "108"
          landmarkName = "-UpdateWish:withDelegate:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "BID/MyWishListC.m"
+         timestampString = "395244956.512446"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
+         landmarkName = "-connection:successConType:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -10,6 +10,9 @@
 		58106529178D7AA700B7CAAE /* shock_title_bg_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58106526178D7AA700B7CAAE /* shock_title_bg_3@2x.png */; };
 		5810652A178D7AA700B7CAAE /* shock_title_bg_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58106527178D7AA700B7CAAE /* shock_title_bg_2@2x.png */; };
 		5810652B178D7AA700B7CAAE /* shock_title_bg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58106528178D7AA700B7CAAE /* shock_title_bg_1@2x.png */; };
+		581F7ECF178E9D88008E0DB0 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581F7ECE178E9D88008E0DB0 /* Toast+UIView.m */; };
+		581F7ED3178EFB37008E0DB0 /* SettingC.m in Sources */ = {isa = PBXBuildFile; fileRef = 581F7ED1178EFB37008E0DB0 /* SettingC.m */; };
+		581F7ED4178EFB37008E0DB0 /* SettingC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 581F7ED2178EFB37008E0DB0 /* SettingC.xib */; };
 		5834B29D178B09B500A51583 /* BaiduSocialShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5834B280178B09B500A51583 /* BaiduSocialShare.framework */; };
 		5834B29E178B09B500A51583 /* BaiduSocialShareSource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5834B281178B09B500A51583 /* BaiduSocialShareSource.bundle */; };
 		5834B2A0178B09B500A51583 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5834B28A178B09B500A51583 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -99,6 +102,11 @@
 		58106526178D7AA700B7CAAE /* shock_title_bg_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shock_title_bg_3@2x.png"; sourceTree = "<group>"; };
 		58106527178D7AA700B7CAAE /* shock_title_bg_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shock_title_bg_2@2x.png"; sourceTree = "<group>"; };
 		58106528178D7AA700B7CAAE /* shock_title_bg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shock_title_bg_1@2x.png"; sourceTree = "<group>"; };
+		581F7ECD178E9D88008E0DB0 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		581F7ECE178E9D88008E0DB0 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
+		581F7ED0178EFB37008E0DB0 /* SettingC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingC.h; sourceTree = "<group>"; };
+		581F7ED1178EFB37008E0DB0 /* SettingC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingC.m; sourceTree = "<group>"; };
+		581F7ED2178EFB37008E0DB0 /* SettingC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingC.xib; sourceTree = "<group>"; };
 		5834B280178B09B500A51583 /* BaiduSocialShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduSocialShare.framework; sourceTree = "<group>"; };
 		5834B281178B09B500A51583 /* BaiduSocialShareSource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BaiduSocialShareSource.bundle; sourceTree = "<group>"; };
 		5834B288178B09B500A51583 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -248,6 +256,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		581F7ECC178E9D88008E0DB0 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				581F7ECD178E9D88008E0DB0 /* Toast+UIView.h */,
+				581F7ECE178E9D88008E0DB0 /* Toast+UIView.m */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
 		5834B27F178B09B500A51583 /* BaiduSocialShare */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +308,9 @@
 			children = (
 				58D97A3F178D5F520068C2C5 /* OtherWishListC.h */,
 				58D97A40178D5F520068C2C5 /* OtherWishListC.m */,
+				581F7ED0178EFB37008E0DB0 /* SettingC.h */,
+				581F7ED1178EFB37008E0DB0 /* SettingC.m */,
+				581F7ED2178EFB37008E0DB0 /* SettingC.xib */,
 				B553B1471787FBAC00376C01 /* MyWishListC.h */,
 				B553B1481787FBAC00376C01 /* MyWishListC.m */,
 				B518509017882C5E00A3F581 /* TPGestureTableViewCell.h */,
@@ -387,6 +407,7 @@
 		B553B1291787F89000376C01 /* BID */ = {
 			isa = PBXGroup;
 			children = (
+				581F7ECC178E9D88008E0DB0 /* Toast */,
 				5834B27F178B09B500A51583 /* BaiduSocialShare */,
 				B553B1321787F89000376C01 /* AppDelegate.h */,
 				B553B1331787F89000376C01 /* AppDelegate.m */,
@@ -542,6 +563,7 @@
 				58106529178D7AA700B7CAAE /* shock_title_bg_3@2x.png in Resources */,
 				5810652A178D7AA700B7CAAE /* shock_title_bg_2@2x.png in Resources */,
 				5810652B178D7AA700B7CAAE /* shock_title_bg_1@2x.png in Resources */,
+				581F7ED4178EFB37008E0DB0 /* SettingC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +604,8 @@
 				5834B2A8178B09B500A51583 /* SBJsonStreamWriterState.m in Sources */,
 				5834B2A9178B09B500A51583 /* SBJsonWriter.m in Sources */,
 				58D97A41178D5F520068C2C5 /* OtherWishListC.m in Sources */,
+				581F7ECF178E9D88008E0DB0 /* Toast+UIView.m in Sources */,
+				581F7ED3178EFB37008E0DB0 /* SettingC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
