@@ -22,9 +22,9 @@
 
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 
-#define QFAppVersionShort [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
-#define QFAppVersionBuild [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
-#define QFAppVersion      [NSString stringWithFormat:@"%@.%@",QFAppVersionShort,QFAppVersionBuild]
+#define AppVersionShort [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define AppVersionBuild [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
+#define AppVersion      [NSString stringWithFormat:@"%@.%@",AppVersionShort,AppVersionBuild]
 
 //NSUserDefaults Shared
 #define USER_DEFAULTS [NSUserDefaults standardUserDefaults]
@@ -44,15 +44,6 @@
 //类型转化为NSString  语法糖...
 #define NSStringFromValue(value) [@(value) description]
 
-/*钱方蓝*/
-#define QFBLUECOLOR [UIColor colorWithRed:0/255.0 green:168/255.0 blue:234/255.0 alpha:1]
-/*钱方黑*/
-#define QFBLACKCOLOR [UIColor colorWithRed:63/255.0 green:66/255.0 blue:69/255.0 alpha:1]
-/*钱方灰*/
-#define QFGRAYCOLOR  [UIColor colorWithRed:103/255.0 green:109/255.0 blue:114/255.0 alpha:1]
-
-#define QFVIEWBGRGB  [UIColor colorWithRed:0.820 green:0.839 blue:0.855 alpha:1.000];
-
 #pragma mark - color functions
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
@@ -60,30 +51,6 @@
 //GCD
 #define GCDBACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
 #define GCDMAIN(block) dispatch_async(dispatch_get_main_queue(),block)
-
-//打印函数富文本
-#ifdef DEBUG_LOG_MODE
-#
-#
-#	if   DEBUG_LOG_MODE==0
-#		define QFDebugLog @"QFDebugLogDismiss"
-#		define NSLog(...) /* */
-#       define DLog(fmt, ...) /* */
-#
-#	elif DEBUG_LOG_MODE==1
-#		define QFDebugLog @"QFDebugLog"
-#        define DLog(fmt, ...) /* */
-#
-#	elif DEBUG_LOG_MODE==2
-#		define QFDebugLog @"QFDebugLog"
-#       define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#	endif
-#
-#   else
-#	define NSLog(...) /* */
-#	define QFDebugLog @"QFDebugLogDismiss"
-#endif
-
 
 #pragma mark - Devices functions ---------------------------------------------------------------------------------------------
 

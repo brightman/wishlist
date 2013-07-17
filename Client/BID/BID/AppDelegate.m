@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MyWishListC.h"
-#import "OtherWishListC.h"
+#import "MotionResponse.h"
 #import <BaiduSocialShare/BDSocialShareSDK.h>
 @implementation AppDelegate
 
@@ -20,8 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    
+    self.window = [[[MotionResponse alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    [USER_DEFAULTS setObject:AppVersion forKey:@"DevVersion"];
     //定义分享平台数组
     NSArray *platforms = [NSArray arrayWithObjects:kBD_SOCIAL_SHARE_PLATFORM_SINAWEIBO,kBD_SOCIAL_SHARE_PLATFORM_KAIXIN,kBD_SOCIAL_SHARE_PLATFORM_RENREN,kBD_SOCIAL_SHARE_PLATFORM_WEIXIN_SESSION,kBD_SOCIAL_SHARE_PLATFORM_WEIXIN_TIMELINE,
                           kBD_SOCIAL_SHARE_PLATFORM_EMAIL,
@@ -35,15 +35,9 @@
     //设置新浪微博和QQ客户端的app id，使用SSO功能
     [BDSocialShareSDK enableSinaWeiboSSOWithAppId:@"3021614187"];
     
-    
     self.window.backgroundColor = [UIColor blackColor];
     MyWishListC *myWishListC = [[MyWishListC new]autorelease];
-    OtherWishListC *otherWishListC = [[OtherWishListC new] autorelease];
-    
-    [self.window addSubview:myWishListC.view];
-    [self.window addSubview:otherWishListC.view];
-    [self.window bringSubviewToFront:myWishListC.view];
-    //self.window.rootViewController = myWishListC;
+    self.window.rootViewController = myWishListC;
     [self.window makeKeyAndVisible];
     return YES;
 }

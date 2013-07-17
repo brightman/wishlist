@@ -1,46 +1,29 @@
 //
-//  OtherWishListC.m
+//  ShakenWishListC.m
 //  BID
 //
 //  Created by brightman on 13-7-10.
 //  Copyright (c) 2013年 qfpay. All rights reserved.
 //
 
-#import "OtherWishListC.h"
+#import "ShakenWishListC.h"
 #import "TPGestureTableViewCell.h"
 #import "User.h"
 #import "Wish.h"
+#import "UIResponder+MotionRecognizersHelper.h"
 
-
-@interface OtherWishListC ()
+@interface ShakenWishListC ()
 @property (nonatomic,retain) UITableView *myTableView;
 @property (nonatomic,retain) NSMutableArray *dataArray;
 @property (nonatomic,retain) TPGestureTableViewCell *currentCell;
 @end
 
-@implementation OtherWishListC
-
-
+@implementation ShakenWishListC
 
 -(void)viewDidAppear:(BOOL)animated{
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     [[UIApplication sharedApplication]setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
-    
-    [self becomeFirstResponder];
-}
-
--(void)viewDidDisappear:(BOOL)animated{
-    [self resignFirstResponder];
-    [super viewWillDisappear:animated];
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [self addMotionRecognizerWithAction:@selector(shakenReloadList)];
 }
 
 - (void)viewDidLoad
@@ -52,8 +35,6 @@
     UIImageView *bg = [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)]autorelease];
     bg.image = [UIImage imageNamed:@"bg@2x.png"];
     [self.view addSubview:bg];
-    
-    
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
 	_myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0,
@@ -67,17 +48,24 @@
 
     [self performSelector:@selector(reloadWishList) withObject:nil afterDelay:0.0];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)shakenReloadList{
+    [self reloadWishList];
+    CATransition *animation = [CATransition animation];
+    animation.delegate = self;
+    animation.duration = 0.5f;
+    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+	animation.fillMode = kCAFillModeForwards;
+	animation.endProgress = 1.0f;
+	animation.removedOnCompletion = NO;
+    animation.type = @"rippleEffect";
+    [self.view.layer addAnimation:animation forKey:@"animation"];
 }
 
 -(void)reloadWishList{
     [[User shared]RandWishlistwithDelegate:self];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -103,15 +91,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
     return [_dataArray count]+2;
 }
 
@@ -127,9 +111,17 @@
         
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
-        UIImageView *headerView = [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 137)]autorelease];
-        headerView.image = [UIImage imageNamed:@"shock_title_bg_1@2x"];
-        [cell addSubview:headerView];
+        UIImageView *animatShakenFly = [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 137)]autorelease];
+        NSArray *animImgArray = [NSArray arrayWithObjects:
+                                 [UIImage imageNamed:@"shock_title_bg_1@2x"],
+                                 [UIImage imageNamed:@"shock_title_bg_2@2x"],
+                                 [UIImage imageNamed:@"shock_title_bg_3@2x"],
+                                 [UIImage imageNamed:@"shock_title_bg_2@2x"],nil];
+        animatShakenFly.animationImages = animImgArray;
+        animatShakenFly.animationDuration = 0.5;
+        animatShakenFly.animationRepeatCount = 0;
+        [animatShakenFly startAnimating];
+        [cell addSubview:animatShakenFly];
         return cell;
     }
     
@@ -272,10 +264,7 @@
 
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     if (motion == UIEventSubtypeMotionShake) {
-        //UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"shake" message:@"game over" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
-        //[alert show];
         [self reloadWishList];
-        
     }
 }
 

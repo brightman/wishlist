@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 qfpay. All rights reserved.
 //
 #import "MyWishListC.h"
+#import "ShakenWishListC.h"
 #import "TPGestureTableViewCell.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
@@ -14,7 +15,8 @@
 #import "User.h"
 #import "Wish.h"
 #import "OpenUDID.h"
-
+#import "UIResponder+MotionRecognizersHelper.h"
+#import <AudioToolbox/AudioToolbox.h>
 @interface MyWishListC (){
     MPMoviePlayerController *player;
     UIView *touchView;
@@ -26,30 +28,16 @@
 
 @implementation MyWishListC
 
--(BOOL)canBecomeFirstResponder {
-    return YES;
-}
-
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-        [[UIApplication sharedApplication]setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
-    
-    [self becomeFirstResponder];
+    [[UIApplication sharedApplication]setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
+    [self addMotionRecognizerWithAction:@selector(showShakenList)];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [self resignFirstResponder];
-    [super viewWillDisappear:animated];
-}
-
--(void)updateLabel{
-    NSTimeInterval timeInterval = [self.countdownDate timeIntervalSinceNow];
-    self.countdownLabel.text = [NSString stringWithFormat:@"%.0f", timeInterval];
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     
     _dataArray = [NSMutableArray new];
     User *user = [User shared];
@@ -71,11 +59,25 @@
     _myTableView.backgroundColor=[UIColor clearColor];
     [self.view addSubview:_myTableView];
     
-    
     [self performSelector:@selector(reloadWishList) withObject:nil afterDelay:0.0];
-    if(![user._userDefaults boolForKey:@"Notfirst"]){
+
+    if ([[USER_DEFAULTS objectForKey:@"VideoToggle"]boolValue]) {
         [self splashView];
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        [USER_DEFAULTS setBool:NO forKey:@"VideoToggle"];
     }
+}
+
+-(void)showShakenList{
+    [self removeMotionRecognizer];
+    ShakenWishListC *shakenC = [ShakenWishListC new];
+    [self presentViewController:shakenC animated:YES completion:nil];
+    [shakenC release];
+}
+
+-(void)updateLabel{
+    NSTimeInterval timeInterval = [self.countdownDate timeIntervalSinceNow];
+    self.countdownLabel.text = [NSString stringWithFormat:@"%.0f", timeInterval];
 }
 
 -(void)reloadWishList{
@@ -181,8 +183,8 @@
         UIImageView *cellgrassView = [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 162)]autorelease];
         cellgrassView.image = [UIImage imageNamed:@"grass@2x"];
         [cell addSubview:cellgrassView];
-        UIImageView *animatHeadset = [[UIImageView alloc]initWithFrame:CGRectMake(-110, 40, 100, 80)];
-        animatHeadset.tag = 0x12;
+        UIImageView *animatFly = [[UIImageView alloc]initWithFrame:CGRectMake(-110, 40, 100, 80)];
+        animatFly.tag = 0x12;
         NSArray *animImgArray = [NSArray arrayWithObjects:[UIImage imageNamed:@"fly-r-1@2x"],
                                  [UIImage imageNamed:@"fly-r-2@2x"],
                                  [UIImage imageNamed:@"fly-r-3@2x"],
@@ -191,12 +193,12 @@
                                  [UIImage imageNamed:@"fly-r-6@2x"],
                                  [UIImage imageNamed:@"fly-r-7@2x"],
                                  [UIImage imageNamed:@"fly-r-8@2x"],nil];
-        animatHeadset.animationImages = animImgArray;
-        animatHeadset.animationDuration = 0.5;
-        animatHeadset.animationRepeatCount = 0;
-        [animatHeadset startAnimating];
+        animatFly.animationImages = animImgArray;
+        animatFly.animationDuration = 0.5;
+        animatFly.animationRepeatCount = 0;
+        [animatFly startAnimating];
         [UIView animateWithDuration:15 delay:0 options: UIViewAnimationOptionRepeat animations:^{
-            animatHeadset.frame = CGRectMake(420, 5, 100, 80);
+            animatFly.frame = CGRectMake(420, 5, 100, 80);
         }completion:^(BOOL finished) {
             
         }];
@@ -206,11 +208,11 @@
         self.countdownLabel.text = @"99:88:77";
         self.countdownLabel.frame = CGRectMake(-10,-5,100,30);
         self.countdownLabel.backgroundColor = [UIColor clearColor];
-        [animatHeadset addSubview:self.countdownLabel];
+        [animatFly addSubview:self.countdownLabel];
         [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLabel) userInfo:nil repeats:YES];
         
-        [cell addSubview:animatHeadset];
-        [animatHeadset release];
+        [cell addSubview:animatFly];
+        [animatFly release];
         return cell;
     }
     
@@ -389,16 +391,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     return (toInterfaceOrientation == UIDeviceOrientationPortrait);
 }
-
--(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    if (motion == UIEventSubtypeMotionShake) {
-        //UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"shake" message:@"game over" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
-        //[alert show];
-        [self resignFirstResponder];
-        [self.view.window sendSubviewToBack:self.view];
-    }
-}
-
 
 -(void)baidushare{
     NSLog(@"baidushare");
